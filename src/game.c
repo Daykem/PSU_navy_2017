@@ -28,8 +28,13 @@ void hit(char **tab, char *coord)
 
 void my_turn(char **enemy_tab, char *coord)
 {
+	int coord_int = 0;
+
 	my_printf("\nattack: ");
-	/*coord = getnextline(0);*/
+	coord_int = my_getnbr(coord = get_next_line(0));
+	if (coord_int != NULL)
+		printf("%d", coord_int);
+	sleep(100);
 	/*envoie coord : missed or hit (+check erreur)*/
 	/*hit(enemy_tab, coord);*/
 }

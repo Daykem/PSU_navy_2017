@@ -16,6 +16,8 @@ SRC_HELP	=	src/help/my_help.c	\
 
 SRC_SIG		=	src/sig/send_sig.c	\
 
+SRC_LIB		=	lib/get_next_line.c
+
 SRC_UT		=	tests/test.c 		\
 
 CFLAGS		+=	-Iinclude
@@ -24,9 +26,9 @@ LDFLAGS		=	-lcriterion -lgcov -L lib/my/ -lmy --coverage
 
 NAME_UT		=	unit-tests
 
-OBJ		=	$(SRC:.c=.o) $(SRC_HELP:.c=.o) $(SRC_SIG:.c=.o)
+OBJ		=	$(SRC:.c=.o) $(SRC_HELP:.c=.o) $(SRC_SIG:.c=.o) $(SRC_LIB:.c=.o)
 
-OBJ_UT		=	$(SRC_UT:.c=.o) $(SRC_HELP:.c=.o) $(SRC_SIG:.c=.o)
+OBJ_UT		=	$(SRC_UT:.c=.o) $(SRC_HELP:.c=.o) $(SRC_SIG:.c=.o) $(SRC_LIB:.c=.o)
 
 NAME		=	navy
 

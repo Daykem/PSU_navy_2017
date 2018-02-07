@@ -25,5 +25,6 @@ void	my_printf(char *, ...);
 int	my_put_nbr(int);
 int	my_putnbr_base(int, char const*);
 int	my_getnbr(char*);
+char	*get_next_line(int);
 
 #endif

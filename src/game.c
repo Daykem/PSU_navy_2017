@@ -28,22 +28,34 @@ void hit(char **tab, char *coord)
 
 void my_turn(char **enemy_tab, char *coord)
 {
-	int coord_int = 0;
+	int letter;
+	int number;
 
 	my_printf("\nattack: ");
-	coord_int = my_getnbr(coord = get_next_line(0));
-	if (coord_int != NULL)
-		printf("%d", coord_int);
-	sleep(100);
-	/*envoie coord : missed or hit (+check erreur)*/
-	/*hit(enemy_tab, coord);*/
+	coord = get_next_line(0);
+	letter = coord[0];
+	number = coord[1];
+	/*envoie coord (int, int)*/
+	/*if (return == 0)
+		hit(enemy_tab);
+	else
+		missed(enemy_tab);*/
 }
 
 void enemy_turn(char **tab)
 {
+	char *enemy_coord[3];
+
 	my_printf("\nwaiting for enemy's attack...\n");
-	/*recoie coord : missed or hit*/
-	/*hit(tab, enemy_coord);*/
+	/*recu coord (int, int)*/
+	/*enemy_coord[0] = letter;
+	enemy_coord[1] = number;*
+	enemy_coord[2] = '\0';
+	if (check_hit(enemy_coord) == 0)*/
+		/*return 0(hit)
+	else
+		return 1(missed)
+	hit(tab, enemy_coord);*/
 }
 void game1(char *map)
 {

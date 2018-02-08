@@ -1,0 +1,24 @@
+/*
+** EPITECH PROJECT, 2017
+** check_hit.c
+** File description:
+** Made by Nathan GRIMAUD and Tom ROUVIER
+*/
+
+#include "navy.h"
+
+int check_hit(char **tab, char *coord)
+{
+	int pos = 0;
+	int letter = 'A';
+
+	while (letter != coord[0]) {
+		letter++;
+		pos += 2;
+	}
+	if (tab[pos][my_getnbr(&coord[1]) - 1] >= '2' &&
+	 tab[pos][my_getnbr(&coord[1]) - 1] <= '5')
+		return (0);
+	else
+		return (1);
+}

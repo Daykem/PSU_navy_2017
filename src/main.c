@@ -25,7 +25,6 @@ int main(int ac, char **av)
 	} else if (ac == 3) {
 		enemy_pid = my_getnbr(av[1]);
 		ret = kill(enemy_pid, SIGUSR1);
-		printf("%d\n", ret);
 		game2(read_my_pos(av[2]));
 		return (0);
 	}

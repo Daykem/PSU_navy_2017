@@ -11,6 +11,7 @@ SRC		=	src/main.c		\
 			src/read_positions.c	\
 			src/fill_tab.c		\
 			src/game.c		\
+			src/check_hit.c		\
 
 SRC_HELP	=	src/help/my_help.c	\
 

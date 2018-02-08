@@ -22,5 +22,6 @@ void fill_map(char**, char);
 void affect_map(char**, char*, int);
 void print_tab(char**);
 void send_sig();
+int check_hit(char**, char*);
 
 #endif /* NAVY_H_ */

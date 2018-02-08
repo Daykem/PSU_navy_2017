@@ -37,9 +37,9 @@ void my_turn(char **enemy_tab, char *coord)
 	//number = coord[1];
 	/*envoie coord (int, int)*/
 	/*if (return == 0)
-		hit(enemy_tab);
+		hit(enemy_tab, coord, 0);
 	else
-		missed(enemy_tab);*/
+		missed(enemy_tab, coord, 1);*/
 }
 
 void enemy_turn(char **tab)

@@ -23,5 +23,6 @@ void affect_map(char**, char*, int);
 void print_tab(char**);
 void send_sig();
 int check_hit(char**, char*);
+void enemy_hit(char **, char*, int);
 
 #endif /* NAVY_H_ */

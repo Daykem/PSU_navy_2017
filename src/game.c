@@ -32,9 +32,9 @@ void my_turn(char **enemy_tab, char *coord)
 	int number;
 
 	my_printf("\nattack: ");
-	coord = get_next_line(0);
-	letter = coord[0];
-	number = coord[1];
+	//coord = get_next_line(0);
+	//letter = coord[0];
+	//number = coord[1];
 	/*envoie coord (int, int)*/
 	/*if (return == 0)
 		hit(enemy_tab);

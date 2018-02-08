@@ -7,6 +7,8 @@
 
 #include "navy.h"
 
+static int received = 0;
+
 char *binaire(unsigned int nbr)
 {
 	int i = 0;
@@ -14,8 +16,9 @@ char *binaire(unsigned int nbr)
 	int size_base = my_strlen(base);
 	int res = 0;
 	int div = 0;
-	char *resu = malloc(sizeof(char) * 8);
+	char *resu = "00000000";
 
+	resu = malloc(sizeof(char) * 9);
 	if (nbr < 0) {
 		resu[i] = '-';                            
 		nbr = -nbr;
@@ -36,10 +39,14 @@ char *binaire(unsigned int nbr)
 
 void catch(int signal, siginfo_t *info, void *str)
 {
-	if (signal == SIGUSR1)
+	if (signal == SIGUSR1) {
 		my_printf("%c\n", '0');
-	else if (signal == SIGUSR2)
+		received++;
+	}
+	else if (signal == SIGUSR2) {
 		my_printf("%c\n", '1');
+		received++;
+	}
 }
 
 int main(int ac, char **av)
@@ -48,9 +55,7 @@ int main(int ac, char **av)
 	int i = 0;
 	char *resu;
 	int j = 0;
-	struct sigaction sa;
 
-	sa.sa_sigaction = catch;
 	if (ac == 2) {
 		if (av[1][0] == '-' && av[1][1] == 'h') {
 			help();
@@ -59,8 +64,9 @@ int main(int ac, char **av)
 		my_pid();
 		my_printf("waiting for enemy connexion...\n");
 		send_sig();
-		while (j < 4) {
-			if (sigaction(SIGUSR1, &sa, NULL) == -1 || sigaction(SIGUSR2, &sa, NULL) == -1);
+		while (received != 7) {
+			signal(SIGUSR1, catch);
+			signal(SIGUSR2, catch);
 		}
 		game1(read_my_pos(av[1]));
 		return (0);
@@ -70,7 +76,6 @@ int main(int ac, char **av)
 		game2(read_my_pos(av[2]));
 		i = my_getnbr(get_next_line(0));
 		resu = binaire(i);
-		printf("%s\n", resu);
 		i = 0;
 		while (resu[i]) {
 			if (resu[i] == '0')

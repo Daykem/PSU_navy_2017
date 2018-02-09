@@ -1,116 +1,87 @@
 /*
 ** EPITECH PROJECT, 2017
-** get_next_line
+** get_next_line.c
 ** File description:
-** Made by Daykem
+** Made by Nathan GRIMAUD <Jimmy>
 */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include <grp.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <time.h>
 #include <fcntl.h>
-#include <stdio.h>
-#include <dirent.h>
-#include "get_next_line.h"
+#include <string.h>
 
-int     my_strlen(char *str)
-{
-        int i = 0;
-
-        while (str && str[i])
-		i++;
-        return (i);
-}
-
-char    *my_strcat(char *dest, char *src)
-{
- 	char *tab;
-        int a = 0;
-        int b = 0;
-        int i = 0;
-
-        tab = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 1));
-        while (dest && dest[a]) {
-                tab[i] = dest[a];
-		a++;
-		i++;
-	}
-        while (src && src[b]) {
-		tab[i] = src[b];
-		i++;
-		b++;
-	}
-        tab[i] = '\0';
-	return (tab);
-}
-
-char	*my_strdup(char *src, int size)
+char *over_read(char *str)
 {
 	int i = 0;
-	char *tmp = src;
+	int j = 0;
+	char *temp = malloc(sizeof(char) * (1 + 1));
 
-	src = malloc(sizeof(char*) * size);
-	if (src == NULL)
-		return (0);
-	for (i = 0; tmp[i]; i++)
-		src[i] = tmp[i];
-	free(tmp);
-	return (src);
+	if (temp == NULL)
+		return (NULL);
+	while (str[i] != '\n')
+		i++;
+	i++;
+	while (str[i])
+		temp[j++] = str[i++];
+	temp[j] = '\0';
+	return (temp);
 }
 
-char	*get_next_line(int fd)
+int check_n(char *str)
 {
-	int size = (READ_SIZE + 1);
-	char *buffer = malloc(sizeof(char) * size);
-	char result;
 	int i = 0;
-	static int res;
-	static char buff[READ_SIZE];
-	static char *tmp;
 
-	if (res == 0) {
-		res = read(fd, buff, READ_SIZE);
-		tmp =  my_strcat(tmp, buff);
-		if (res == 0 || res == -1)
-			return (0);
-	}
-	result = *tmp;
-	res--;
-	tmp++;
-	if (buffer == NULL)
-		return (0);
-	while (result != '\n' && result) {
-		buffer[i] = result;
-		if (res == 0) {
-			res = read(fd, buff, READ_SIZE);
-			tmp =  my_strcat(tmp, buff);
-			if (res == 0 || res == -1)
-				return (0);
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		return (1);
+	return (0);
+}
+
+char *my_strcatn(char *dest, char *src)
+{
+	int i = 0;
+	int j = 0;
+
+	while (dest[i])
+		i++;
+	while (src[j] != '\0' && src[j] != '\n')
+		dest[i++] = src[j++];
+	dest[i] = '\0';
+	return (dest);
+}
+
+char *get_next_line(int fd)
+{
+	char *buffer = NULL;
+	char *str = malloc(4096);
+	static char *over_str = NULL;
+
+	if (str == NULL)
+		return (NULL);
+	str[0] = '\0';
+	if (over_str != NULL)
+		str = my_strcatn(str, over_str);
+	while (1) {
+		buffer = malloc(sizeof(char) * (1 + 1));
+		if (buffer == NULL)
+			return (NULL);
+		if (read(fd, buffer, 1) == 0) {
+			free(buffer);
+			return (NULL);
 		}
-		result = *tmp;
-		res--;
-		tmp++;
-		i++;
-		if ((i % size) == 0)
-			buffer = my_strdup(buffer, (size + i));
+		buffer[1] = '\0';
+		str = my_strcatn(str, buffer);
+		if (check_n(buffer) == 1) {
+			free(over_str);
+			over_str = over_read(buffer);
+			free(buffer);
+			break;
+		}
+		free(buffer);
 	}
-	buffer[i] = 0;
-	return (buffer);
+	return (str);
 }
-/*
-int	main(int ac, char **av)
-{
-	int fd = open(av[1], O_RDONLY);
-	char *s = get_next_line(fd);
-
-	while (s) {
-	  printf("%s\n", s);
-	  free(s);
-	  s = get_next_line(fd);
-	}
-	return 0;
-}
-*/

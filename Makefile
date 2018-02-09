@@ -12,18 +12,20 @@ SRC		=	src/main.c		\
 			src/fill_tab.c		\
 			src/game.c		\
 			src/check_hit.c		\
+			src/glob_f.c		\
 
 SRC_HELP	=	src/help/my_help.c	\
 
 SRC_SIG		=	src/sig/send_sig.c	\
 
-SRC_LIB		=	lib/get_next_line.c
+SRC_LIB		=	lib/get_next_line.c	\
+			lib/my_getnbr.c		\
 
 SRC_UT		=	tests/test.c 		\
 
 CFLAGS		+=	-Iinclude -g3
 
-LDFLAGS		=	-lcriterion -lgcov -L lib/my/ -lmy --coverage
+LDFLAGS		=	-lcriterion -lgcov -L lib/printf/ -lprintf --coverage
 
 NAME_UT		=	unit-tests
 
@@ -36,7 +38,7 @@ NAME		=	navy
 all:		$(NAME)
 
 tests_run:	$(OBJ_UT)
-	make -C lib/my/
+	make -C lib/printf/
 	cc -o $(NAME_UT) $(OBJ_UT) $(LDFLAGS)
 	rm -f *.o
 	rm -f *.gcda
@@ -46,8 +48,8 @@ tests_run:	$(OBJ_UT)
 	./unit-tests
 
 $(NAME):	$(OBJ)
-	make -C lib/my
-	gcc $(OBJ) -o $(NAME) -L lib/my -lmy $(CFLAGS)
+	make -C lib/printf
+	gcc $(OBJ) -o $(NAME) -L lib/printf -lprintf $(CFLAGS)
 	rm -f *.o
 	rm -f *.gcda
 	rm -f *.gcdo

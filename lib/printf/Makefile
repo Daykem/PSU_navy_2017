@@ -2,15 +2,15 @@
 ## EPITECH PROJECT, 2017
 ## Makefile
 ## File description:
-## Made by Devlopers
+## Made by Nathan GRIMAUD
 ##
 
-NAME	=	libmy.a
+NAME	=	libprintf.a
 
 all:	$(NAME)
 
 $(NAME):
-	gcc -c *.c
+	gcc -c *.c src/*.c
 	ar rc $(NAME) *.o
 	make clean
 

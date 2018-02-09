@@ -6,65 +6,8 @@
 */
 
 #include "navy.h"
+
 char *glob;
-
-int global2(int value, int mode)
-{
-	static int save = 0;
-	if (mode == 0)
-		save = value;
-	return (save);
-}
-
-int global(int value, int mode)
-{
-	static int save = 0;
-	if (mode == 0)
-		save = value;
-	return (save);
-}
-
-void find_coord(int i, int j)
-{
-	char letter = 'A';
-	int k = -1;
-	glob = malloc(sizeof(char) * 3);
-
-	while (++k < i)
-		letter++;
-	glob[0] = letter;
-	glob[1] = j + '0';
-	glob[2] = '\0';
-}
-
-void tata(int sig)
-{
-	if (sig == SIGUSR1)
-		global2(1, 0);
-	else if (sig == SIGUSR2)
-		global2(2, 0);
-}
-
-void toto(int sig)
-{
-	static int i = 0;
-	static int j = 0;
-	static int k = 0;
-
-	if (sig == SIGUSR2)
-		k++;
-	if (k == 0)
-		i++;
-	else if (k == 1)
-		j++;
-	else {
-		find_coord(i, j - 1);
-		global(1, 0);
-		i = 0;
-		j = 0;
-		k = 0;
-	}
-}
 
 void si(char **tab, char *coord, int pid)
 {
@@ -150,6 +93,8 @@ void game2(char *map, int enemy_pid)
 	char **tab = create_tab(map);
 	char *coord;
 
+	my_pid();
+	my_printf("successfully connected\n");
 	affect_map(tab, map, 0);
 	fill_map(tab, '3');
 	while (42) {

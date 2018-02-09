@@ -26,7 +26,11 @@ int check_hit(char**, char*);
 void enemy_hit(char **, char*, int);
 void hit(char**, char*);
 int global(int, int);
-void exec(int);
+int global2(int, int);
 int global3(int, int);
+void exec(int);
+void find_coord(int, int);
+void tata(int);
+void toto(int);
 
 #endif /* NAVY_H_ */

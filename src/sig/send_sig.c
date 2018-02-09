@@ -7,9 +7,21 @@
 
 #include "navy.h"
 
-void sighandler(int sigul, siginfo_t *info, void *str)
+int global3(int value, int mode)
 {
+	static int save = 0;
+
+	if (mode == 0)
+		save = value;
+	return (save);
+}
+
+void sighandler(int sigul, siginfo_t *info, void *context)
+{
+	int pid = info->si_pid;
+
 	my_printf("enemy connected\n\n");
+	global3(pid, 0);
 }
 
 void send_sig()

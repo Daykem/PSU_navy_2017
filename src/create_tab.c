@@ -27,7 +27,7 @@ void affect_map(char **tab, char *map, int i)
 	while (map[i] < 'A' || map[i] > 'H')
 		i++;
 	j = i;
-	while (map[j] != '\n' && map[j])
+	while (map && map[j] != '\n' && map[j] != '\0')
 		j--;
 	number = map[j + 1];
 	while (letter != map[i]) {
@@ -36,7 +36,7 @@ void affect_map(char **tab, char *map, int i)
 	}
 	i++;
 	tab[my_getnbr(&map[i]) - 1][pos] = number;
-	if (map[i + 2] == '\0' || map[i + 1] == '\0')
+	if (map[i + 1] == '\0' || map[i + 2] == '\0')
 		return;
 	affect_map(tab, map, i);
 }

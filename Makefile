@@ -21,7 +21,7 @@ SRC_LIB		=	lib/get_next_line.c
 
 SRC_UT		=	tests/test.c 		\
 
-CFLAGS		+=	-Iinclude
+CFLAGS		+=	-Iinclude -g3
 
 LDFLAGS		=	-lcriterion -lgcov -L lib/my/ -lmy --coverage
 

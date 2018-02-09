@@ -32,8 +32,7 @@ char    *my_strcat(char *dest, char *src)
         int b = 0;
         int i = 0;
 
-        tab = malloc(sizeof(char) * (my_strlen(dest)
-                                     + my_strlen(src) + 1));
+        tab = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 1));
         while (dest && dest[a]) {
                 tab[i] = dest[a];
 		a++;

@@ -39,9 +39,9 @@ void find_coord(int i, int j)
 
 void tata(int sig)
 {
-	if (sig == SIGUSR2)
+	if (sig == SIGUSR1)
 		global2(1, 0);
-	else if (sig == SIGUSR1)
+	else if (sig == SIGUSR2)
 		global2(2, 0);
 }
 
@@ -60,6 +60,9 @@ void toto(int sig)
 	else {
 		find_coord(i, j - 1);
 		global(1, 0);
+		i = 0;
+		j = 0;
+		k = 0;
 	}
 }
 
@@ -95,13 +98,15 @@ void my_turn(char **enemy_tab, char *coord, int pid)
 	while (1) {
 		signal(SIGUSR1, tata);
 		signal(SIGUSR2, tata);
-		if (global2(0, 1) == 0)
+		if (global2(0, 1) != 0)
 			break;
 	}
 	if (global2(0, 1) == 1)
 		enemy_hit(enemy_tab, coord, 0);
 	else if (global2(0, 1) == 2)
-		enemy_hit(enemy_tab, coord, 0);
+		enemy_hit(enemy_tab, coord, 1);
+	global2(0, 0);
+	glob = "\0";
 }
 
 void enemy_turn(char **tab, int pid)
@@ -113,6 +118,7 @@ void enemy_turn(char **tab, int pid)
 		if (global(0, 1) == 1)
 			break;
 	}
+	global(0, 0);
 	if (check_hit(tab, glob) == 0)
 		kill(pid, SIGUSR1);
 	else
@@ -129,12 +135,12 @@ void game1(char *map, int enemy_pid)
 	affect_map(tab, map, 0);
 	fill_map(tab, '3');
 	while (42) {
-		my_printf("my positions:\n");
+		my_printf("\nmy positions:\n");
 		print_tab(tab);
 		my_printf("\nenemy's positions:\n");
 		print_tab(enemy_tab);
-		enemy_turn(tab, enemy_pid);
 		my_turn(enemy_tab, coord, enemy_pid);
+		enemy_turn(tab, enemy_pid);
 	}
 }
 
@@ -147,11 +153,11 @@ void game2(char *map, int enemy_pid)
 	affect_map(tab, map, 0);
 	fill_map(tab, '3');
 	while (42) {
-		my_printf("my positions:\n");
+		my_printf("\nmy positions:\n");
 		print_tab(tab);
 		my_printf("\nenemy's positions:\n");
 		print_tab(enemy_tab);
-		my_turn(enemy_tab, coord, enemy_pid);
 		enemy_turn(tab, enemy_pid);
+		my_turn(enemy_tab, coord, enemy_pid);
 	}
 }

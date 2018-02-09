@@ -20,7 +20,7 @@ void sighandler(int sigul, siginfo_t *info, void *context)
 {
 	int pid = info->si_pid;
 
-	my_printf("enemy connected\n\n");
+	my_printf("\nenemy connected\n");
 	global3(pid, 0);
 }
 

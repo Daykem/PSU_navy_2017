@@ -18,8 +18,8 @@ int check_hit(char **tab, char *coord)
 		letter++;
 		pos += 2;
 	}
-	if (tab[pos][my_getnbr(&coord[1]) - 1] >= '2' &&
-	 tab[pos][my_getnbr(&coord[1]) - 1] <= '5')
+	if (tab[my_getnbr(&coord[1]) - 1][pos] >= '2' &&
+	 tab[my_getnbr(&coord[1]) - 1][pos] <= '5')
 		return (0);
 	return (1);
 }
@@ -35,10 +35,10 @@ void enemy_hit(char **tab, char*coord, int hit)
 	}
 	if (hit == 0) {
 		my_printf("%s: hit\n", coord);
-		tab[pos][my_getnbr(&coord[1]) - 1] = 'x';
+		tab[my_getnbr(&coord[1]) - 1][pos] = 'x';
 	} else {
 		my_printf("%s: missed\n", coord);
-		tab[pos][my_getnbr(&coord[1]) - 1] = 'o';
+		tab[my_getnbr(&coord[1]) - 1][pos] = 'o';
 	}
 }
 
@@ -51,12 +51,12 @@ void hit(char **tab, char *coord)
 		letter++;
 		pos += 2;
 	}
-	if (tab[pos][my_getnbr(&coord[1]) - 1] >= '2' &&
-	 tab[pos][my_getnbr(&coord[1]) - 1] <= '5') {
+	if (tab[my_getnbr(&coord[1]) - 1][pos] >= '2' &&
+	 tab[my_getnbr(&coord[1]) - 1][pos] <= '5') {
 		my_printf("%s: hit\n", coord);
-		tab[pos][my_getnbr(&coord[1]) - 1] = 'x';
+		tab[my_getnbr(&coord[1]) - 1][pos] = 'x';
 	} else {
 		my_printf("%s: missed\n", coord);
-		tab[pos][my_getnbr(&coord[1]) - 1] = 'o';
+		tab[my_getnbr(&coord[1]) - 1][pos] = 'o';
 	}
 }

@@ -18,7 +18,7 @@ int main(int ac, char **av)
 			return (0);
 		}
 		my_pid();
-		my_printf("waiting for enemy connexion...\n");
+		my_printf("waiting for enemy connection...\n");
 		send_sig();
 		pid = global3(0, 1);
 		game1(read_my_pos(av[1]), pid);
@@ -26,6 +26,8 @@ int main(int ac, char **av)
 	} else if (ac == 3) {
 		enemy_pid = my_getnbr(av[1]);
 		kill(enemy_pid, SIGUSR1);
+		my_pid();
+		my_printf("successfully connected\n");
 		game2(read_my_pos(av[2]), enemy_pid);
 		return (0);
 	}

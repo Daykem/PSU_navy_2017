@@ -29,6 +29,7 @@ void send_sig(void)
 	struct sigaction act;
 	struct sigaction oldact;
 
+	my_pid();
 	my_printf("waiting for enemy connection...\n");
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = sighandler;

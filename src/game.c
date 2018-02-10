@@ -39,9 +39,9 @@ void my_turn(char **enemy_tab, char *coord, int pid)
 		my_printf("\nattack: ");
 		coord = get_next_line(0);
 		if (coord[0] >= 'A' && coord[0] <= 'H' &&
-		coord[1] >= '1' && coord[1] <= '8')
+		coord[1] >= '1' && coord[1] <= '8' && coord[2] == '\0')
 			break;
-		my_printf("wrong position\n");
+		my_printf("wrong position");
 	}
 	si(enemy_tab, coord, pid);
 	while (42) {
@@ -53,10 +53,8 @@ void my_turn(char **enemy_tab, char *coord, int pid)
 	if (global2(0, 1) == 1) {
 		enemy_hit(enemy_tab, coord, 0);
 		global5(0);
-	}
-	else if (global2(0, 1) == 2)
+	} else if (global2(0, 1) == 2)
 		enemy_hit(enemy_tab, coord, 1);
-	global2(0, 0);
 }
 
 void enemy_turn(char **tab, int pid)
@@ -91,13 +89,10 @@ int game1(char *map, int enemy_pid)
 		print_tab(enemy_tab);
 		my_turn(enemy_tab, coord, enemy_pid);
 		enemy_turn(tab, enemy_pid);
-		if (global5(1) == 14) {
-			my_printf("I won\n");
+		if (global5(1) == 14)
 			return (0);
-		} else if (global4(1) == 14) {
-			my_printf("Enemy won\n");
+		else if (global4(1) == 14)
 			return (1);
-		}
 	}
 }
 
@@ -118,12 +113,9 @@ int game2(char *map, int enemy_pid)
 		print_tab(enemy_tab);
 		enemy_turn(tab, enemy_pid);
 		my_turn(enemy_tab, coord, enemy_pid);
-		if (global5(1) == 14) {
-			my_printf("I won\n");
+		if (global5(1) == 14)
 			return (0);
-		} else if (global4(1) == 14) {
-			my_printf("Enemy won\n");
+		else if (global4(1) == 14)
 			return (1);
-		}
 	}
 }

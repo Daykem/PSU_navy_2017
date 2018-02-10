@@ -23,7 +23,7 @@ SRC_LIB		=	lib/get_next_line.c	\
 
 SRC_UT		=	tests/test.c 		\
 
-CFLAGS		+=	-Iinclude -g3
+CFLAGS		+=	-Iinclude
 
 LDFLAGS		=	-lcriterion -lgcov -L lib/printf/ -lprintf --coverage
 

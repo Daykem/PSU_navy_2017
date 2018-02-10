@@ -9,25 +9,31 @@
 
 extern char *glob;
 
-int global5(int mode)
+int gfunc5(int mode)
 {
 	static int save = 0;
+	static int win = 0;
 
 	if (mode == 0)
 		save++;
-	if (save == 14)
+	if (win == 1)
 		my_printf("I won\n");
+	if (save == 14)
+		win++;
 	return (save);
 }
 
-int global4(int mode)
+int gfunc4(int mode)
 {
 	static int save = 0;
+	static int lose = 0;
 
 	if (mode == 0)
 		save++;
-	if (save == 14)
+	if (lose == 1)
 		my_printf("Enemy won\n");
+	if (save == 14)
+		lose++;
 	return (save);
 }
 
@@ -62,7 +68,7 @@ void enemy_hit(char **tab, char*coord, int hit)
 		my_printf("%s: missed\n", coord);
 		tab[my_getnbr(&coord[1]) - 1][pos] = 'o';
 	}
-	global2(0, 0);
+	gfunc2(0, 0);
 }
 
 void hit(char **tab, char *coord)
@@ -76,7 +82,7 @@ void hit(char **tab, char *coord)
 	}
 	if (tab[my_getnbr(&coord[1]) - 1][pos] >= '2' &&
 	tab[my_getnbr(&coord[1]) - 1][pos] <= '5') {
-		global4(0);
+		gfunc4(0);
 		my_printf("%s: hit\n", coord);
 		tab[my_getnbr(&coord[1]) - 1][pos] = 'x';
 	} else {

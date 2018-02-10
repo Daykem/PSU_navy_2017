@@ -47,13 +47,13 @@ void my_turn(char **enemy_tab, char *coord, int pid)
 	while (42) {
 		signal(SIGUSR1, tata);
 		signal(SIGUSR2, tata);
-		if (global2(0, 1) != 0)
+		if (gfunc2(0, 1) != 0)
 			break;
 	}
-	if (global2(0, 1) == 1) {
+	if (gfunc2(0, 1) == 1) {
 		enemy_hit(enemy_tab, coord, 0);
-		global5(0);
-	} else if (global2(0, 1) == 2)
+		gfunc5(0);
+	} else if (gfunc2(0, 1) == 2)
 		enemy_hit(enemy_tab, coord, 1);
 }
 
@@ -63,10 +63,10 @@ void enemy_turn(char **tab, int pid)
 	while (42) {
 		signal(SIGUSR1, toto);
 		signal(SIGUSR2, toto);
-		if (global(0, 1) == 1)
+		if (gfunc(0, 1) == 1)
 			break;
 	}
-	global(0, 0);
+	gfunc(0, 0);
 	if (check_hit(tab, glob) == 0) {
 		kill(pid, SIGUSR1);
 	} else
@@ -89,9 +89,9 @@ int game1(char *map, int enemy_pid)
 		print_tab(enemy_tab);
 		my_turn(enemy_tab, coord, enemy_pid);
 		enemy_turn(tab, enemy_pid);
-		if (global5(1) == 14)
+		if (gfunc5(1) == 14)
 			return (0);
-		else if (global4(1) == 14)
+		else if (gfunc4(1) == 14)
 			return (1);
 	}
 }
@@ -113,9 +113,9 @@ int game2(char *map, int enemy_pid)
 		print_tab(enemy_tab);
 		enemy_turn(tab, enemy_pid);
 		my_turn(enemy_tab, coord, enemy_pid);
-		if (global5(1) == 14)
+		if (gfunc5(1) == 14)
 			return (0);
-		else if (global4(1) == 14)
+		else if (gfunc4(1) == 14)
 			return (1);
 	}
 }

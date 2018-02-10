@@ -9,7 +9,7 @@
 
 char *glob;
 
-int global2(int value, int mode)
+int gfunc2(int value, int mode)
 {
 	static int save = 0;
 	if (mode == 0)
@@ -17,7 +17,7 @@ int global2(int value, int mode)
 	return (save);
 }
 
-int global(int value, int mode)
+int gfunc(int value, int mode)
 {
 	static int save = 0;
 	if (mode == 0)
@@ -41,9 +41,9 @@ void find_coord(int i, int j)
 void tata(int sig)
 {
 	if (sig == SIGUSR1)
-		global2(1, 0);
+		gfunc2(1, 0);
 	else if (sig == SIGUSR2)
-		global2(2, 0);
+		gfunc2(2, 0);
 }
 
 void toto(int sig)
@@ -60,7 +60,7 @@ void toto(int sig)
 		j++;
 	else {
 		find_coord(i, j - 1);
-		global(1, 0);
+		gfunc(1, 0);
 		i = 0;
 		j = 0;
 		k = 0;

@@ -7,7 +7,7 @@
 
 #include "navy.h"
 
-int global3(int value, int mode)
+int gfunc3(int value, int mode)
 {
 	static int save = 0;
 
@@ -21,7 +21,7 @@ void sighandler(int sigul, siginfo_t *info, void *context)
 	int pid = info->si_pid;
 
 	my_printf("\nenemy connected\n");
-	global3(pid, 0);
+	gfunc3(pid, 0);
 }
 
 void send_sig(void)

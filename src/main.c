@@ -18,7 +18,7 @@ int main(int ac, char **av)
 			return (0);
 		}
 		send_sig();
-		pid = global3(0, 1);
+		pid = gfunc3(0, 1);
 		return (game1(read_my_pos(av[1]), pid));
 	} else if (ac == 3) {
 		enemy_pid = my_getnbr(av[1]);

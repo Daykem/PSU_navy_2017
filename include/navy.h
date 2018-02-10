@@ -16,8 +16,8 @@ void help();
 char *read_my_pos(char*);
 void fill_hor(char**, int, int, char);
 void fill_ver(char**, int, int, char);
-void game1(char*, int);
-void game2(char*, int);
+int game1(char*, int);
+int game2(char*, int);
 void fill_map(char**, char);
 void affect_map(char**, char*, int);
 void print_tab(char**);
@@ -28,9 +28,12 @@ void hit(char**, char*);
 int global(int, int);
 int global2(int, int);
 int global3(int, int);
+int global4(int);
+int global5(int);
 void exec(int);
 void find_coord(int, int);
 void tata(int);
 void toto(int);
+int check_win(char**);
 
 #endif /* NAVY_H_ */

@@ -20,12 +20,14 @@ int main(int ac, char **av)
 		my_pid();
 		send_sig();
 		pid = global3(0, 1);
-		game1(read_my_pos(av[1]), pid);
+		if (game1(read_my_pos(av[1]), pid) == 1)
+			return (1);
 		return (0);
 	} else if (ac == 3) {
 		enemy_pid = my_getnbr(av[1]);
 		kill(enemy_pid, SIGUSR1);
-		game2(read_my_pos(av[2]), enemy_pid);
+		if (game2(read_my_pos(av[2]), enemy_pid) == 1)
+			return (1);
 		return (0);
 	}
 	return (84);

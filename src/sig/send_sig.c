@@ -24,7 +24,7 @@ void sighandler(int sigul, siginfo_t *info, void *context)
 	global3(pid, 0);
 }
 
-void send_sig()
+void send_sig(void)
 {
 	struct sigaction act;
 	struct sigaction oldact;

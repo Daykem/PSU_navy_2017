@@ -9,6 +9,24 @@
 
 extern char *glob;
 
+int global5(int mode)
+{
+	static int save = 0;
+
+	if (mode == 0)
+		save++;
+	return (save);
+}
+
+int global4(int mode)
+{
+	static int save = 0;
+
+	if (mode == 0)
+		save++;
+	return (save);
+}
+
 int check_hit(char **tab, char *coord)
 {
 	int pos = 0;
@@ -52,7 +70,8 @@ void hit(char **tab, char *coord)
 		pos += 2;
 	}
 	if (tab[my_getnbr(&coord[1]) - 1][pos] >= '2' &&
-	 tab[my_getnbr(&coord[1]) - 1][pos] <= '5') {
+	tab[my_getnbr(&coord[1]) - 1][pos] <= '5') {
+		global4(0);
 		my_printf("%s: hit\n", coord);
 		tab[my_getnbr(&coord[1]) - 1][pos] = 'x';
 	} else {

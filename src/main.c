@@ -9,21 +9,20 @@
 
 int main(int ac, char **av)
 {
-	int enemy_pid = 0;
-	int pid = 0;
-
 	if (ac == 2) {
 		if (av[1][0] == '-' && av[1][1] == 'h') {
 			help();
 			return (0);
 		}
+		if (read_my_pos(av[1]) == NULL)
+			return (84);
 		send_sig();
-		pid = gfunc3(0, 1);
-		return (game1(read_my_pos(av[1]), pid));
+		return (game1(read_my_pos(av[1]), gfunc3(0, 1)));
 	} else if (ac == 3) {
-		enemy_pid = my_getnbr(av[1]);
-		kill(enemy_pid, SIGUSR1);
-		return (game2(read_my_pos(av[2]), enemy_pid));
+		if (read_my_pos(av[2]) == NULL)
+			return (84);
+		kill(my_getnbr(av[1]), SIGUSR1);
+		return (game2(read_my_pos(av[2]), my_getnbr(av[1])));
 	}
 	return (84);
 }

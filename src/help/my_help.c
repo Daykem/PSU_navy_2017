@@ -13,5 +13,5 @@ void help(void)
 	my_printf("DESCRIPTION\n\tfirst_player_pid   only for the 2nd player.");
 	my_printf("  pid of the first player.\n\t");
 	my_printf("navy_positions     file representing the positions of");
-	my_printf("the ships.\n");
+	my_printf(" the ships.\n");
 }

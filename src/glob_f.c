@@ -12,6 +12,7 @@ char *glob;
 int gfunc2(int value, int mode)
 {
 	static int save = 0;
+
 	if (mode == 0)
 		save = value;
 	return (save);
@@ -20,6 +21,7 @@ int gfunc2(int value, int mode)
 int gfunc(int value, int mode)
 {
 	static int save = 0;
+
 	if (mode == 0)
 		save = value;
 	return (save);
@@ -29,8 +31,8 @@ void find_coord(int i, int j)
 {
 	char letter = 'A';
 	int k = -1;
-	glob = malloc(sizeof(char) * 3);
 
+	glob = malloc(sizeof(char) * 3);
 	while (++k < i)
 		letter++;
 	glob[0] = letter;

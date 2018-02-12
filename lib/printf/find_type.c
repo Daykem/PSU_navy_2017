@@ -10,53 +10,53 @@
 void find1(char *str, char *types, int i, int j)
 {
 	switch (str[i + 1]) {
-	case 'd':
-		types[j] = 'd';
-		break;
-	case 's':
-		types[j] = 's';
-		break;
-	case 'c':
-		types[j] = 'c';
-		break;
-	case 'b':
-		types[j] = 'b';
-		break;
+		case 'd':
+			types[j] = 'd';
+			break;
+		case 's':
+			types[j] = 's';
+			break;
+		case 'c':
+			types[j] = 'c';
+			break;
+		case 'b':
+			types[j] = 'b';
+			break;
 	}
 }
 void find2(char *str, char *types, int i, int j)
 {
 	switch (str[i + 1]) {
-	case 'S':
-		types[j] = 'S';
-		break;
-	case 'x':
-		types[j] = 'x';
-		break;
-	case 'X':
-		types[j] = 'X';
-		break;
-	case 'o':
-		types[j] = 'o';
-		break;
+		case 'S':
+			types[j] = 'S';
+			break;
+		case 'x':
+			types[j] = 'x';
+			break;
+		case 'X':
+			types[j] = 'X';
+			break;
+		case 'o':
+			types[j] = 'o';
+			break;
 	}
 }
 
 void find3(char *str, char *types, int i, int j)
 {
 	switch (str[i + 1]) {
-	case 'u':
-		types[j] = 'u';
-		break;
-	case '%':
-		types[j] = '%';
-		break;
-	case 'i':
-		types[j] = 'd';
-		break;
-	case 'p':
-		types[j] = 'p';
-		break;
+		case 'u':
+			types[j] = 'u';
+			break;
+		case '%':
+			types[j] = '%';
+			break;
+		case 'i':
+			types[j] = 'd';
+			break;
+		case 'p':
+			types[j] = 'p';
+			break;
 	}
 }
 

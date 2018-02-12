@@ -47,7 +47,7 @@ int check_hit(char **tab, char *coord)
 		pos += 2;
 	}
 	if (tab[my_getnbr(&coord[1]) - 1][pos] >= '2' &&
-	 tab[my_getnbr(&coord[1]) - 1][pos] <= '5')
+	tab[my_getnbr(&coord[1]) - 1][pos] <= '5')
 		return (0);
 	return (1);
 }

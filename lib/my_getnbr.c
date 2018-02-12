@@ -22,6 +22,5 @@ int my_getnbr(char const *str)
 	}
 	if (nbr > 2147483647 || nbr < -2147483648)
 		return (0);
-	else
-		return (nbr * m);
+	return (nbr * m);
 }

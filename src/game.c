@@ -67,9 +67,9 @@ void enemy_turn(char **tab, int pid)
 			break;
 	}
 	gfunc(0, 0);
-	if (check_hit(tab, glob) == 0) {
+	if (check_hit(tab, glob) == 0)
 		kill(pid, SIGUSR1);
-	} else
+	else
 		kill(pid, SIGUSR2);
 	hit(tab, glob);
 }

@@ -18,13 +18,13 @@
 #ifndef MY_H_H_
 # define MY_H_H_
 
-void	my_putchar(char);
-void	my_putstr(char *);
-int	my_strlen(char const *);
-void	my_printf(char *, ...);
-int	my_put_nbr(int);
-int	my_putnbr_base(int, char const*);
-int	my_getnbr(char*);
-char	*get_next_line(int);
+void my_putchar(char);
+void my_putstr(char*);
+int my_strlen(char const*);
+void my_printf(char*, ...);
+int my_put_nbr(int);
+int my_putnbr_base(int, char const*);
+int my_getnbr(char*);
+char *get_next_line(int);
 
 #endif

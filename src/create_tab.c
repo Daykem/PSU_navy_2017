@@ -16,7 +16,6 @@ void print_tab(char **tab)
 		my_printf("%d|%s\n", i + 1, tab[i]);
 }
 
-
 void affect_map(char **tab, char *map, int i)
 {
 	int letter = 'A';

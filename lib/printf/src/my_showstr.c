@@ -31,8 +31,7 @@ int my_showstr(char const *str)
 			my_putchar('\\');
 			fill_zero(str, i);
 			my_putnbr_base(str[i], base);
-		}
-		else
+		} else
 			my_putchar(str[i]);
 		i++;
 	}

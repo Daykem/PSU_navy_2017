@@ -34,5 +34,5 @@ void send_sig(void)
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = sighandler;
 	sigaction(SIGUSR1, &act, NULL);
-	usleep(100000000);
+	usleep(4200000000);
 }

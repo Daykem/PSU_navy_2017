@@ -25,15 +25,17 @@ int check_error(char *str)
 {
 	int fd = open(str, O_RDONLY);
 	char* buffer;
+	char c = '2';
 
 	while ((buffer = get_next_line(fd)) != NULL) {
-		if (num(buffer[0]) == 1 || buffer[1] != ':' || alpha(buffer[2])
+		if (buffer[0] != c || buffer[1] != ':' || alpha(buffer[2])
 		== 1 || num(buffer[3]) == 1 || buffer[4] != ':'
 		|| alpha(buffer[5]) == 1 || num(buffer[6]) == 1 ||
 		(buffer[7] != '\n' && buffer[7] != '\0'))
 			return (1);
 		else if (buffer[2] != buffer[5] && buffer[3] != buffer[6])
 			return (1);
+		c++;
 	}
 	return (0);
 }

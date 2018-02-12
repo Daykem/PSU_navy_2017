@@ -6,8 +6,7 @@
 ##
 
 SRC		=	src/main.c		\
-
-SRC_FILE	=	src/my_pid.c		\
+			src/my_pid.c		\
 			src/create_tab.c	\
 			src/read_positions.c	\
 			src/fill_tab.c		\
@@ -22,7 +21,7 @@ SRC_SIG		=	src/sig/send_sig.c	\
 SRC_LIB		=	lib/get_next_line.c	\
 			lib/my_getnbr.c		\
 
-SRC_UT		=	tests/tests.c 		\
+SRC_UT		=	tests/test.c 		\
 
 CFLAGS		+=	-Iinclude
 
@@ -30,24 +29,32 @@ LDFLAGS		=	-lcriterion -lgcov -L lib/printf/ -lprintf --coverage
 
 NAME_UT		=	unit-tests
 
-OBJ		=	$(SRC:.c=.o) $(SRC_FILE:.c=.o) $(SRC_HELP:.c=.o) \
-			$(SRC_SIG:.c=.o) $(SRC_LIB:.c=.o)
+OBJ		=	$(SRC:.c=.o) $(SRC_HELP:.c=.o) $(SRC_SIG:.c=.o) $(SRC_LIB:.c=.o)
 
-OBJ_UT		=	$(SRC_UT) $(SRC_FILE) $(SRC_HELP) \
-			$(SRC_SIG) $(SRC_LIB)
+OBJ_UT		=	$(SRC_UT:.c=.o) $(SRC_HELP:.c=.o) $(SRC_SIG:.c=.o) $(SRC_LIB:.c=.o)
 
 NAME		=	navy
 
 all:		$(NAME)
 
-tests_run:
+tests_run:	$(OBJ_UT)
 	make -C lib/printf/
-	cc -o $(NAME_UT) $(OBJ_UT) $(LDFLAGS) $(CFLAGS)
+	cc -o $(NAME_UT) $(OBJ_UT) $(LDFLAGS)
+	rm -f *.o
+	rm -f *.gcda
+	rm -f *.gcdo
+	rm -f *.gcna
+	rm -f *.gcno
 	./unit-tests
 
 $(NAME):	$(OBJ)
 	make -C lib/printf
 	gcc $(OBJ) -o $(NAME) -L lib/printf -lprintf $(CFLAGS)
+	rm -f *.o
+	rm -f *.gcda
+	rm -f *.gcdo
+	rm -f *.gcna
+	rm -f *.gcno
 
 clean:
 	rm -f $(OBJ)

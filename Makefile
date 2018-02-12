@@ -56,6 +56,7 @@ fclean:	clean
 	rm -f $(NAME)
 	rm -f unit-tests
 	rm -f *.o
+	rm lib/printf/libprintf.a
 	rm -f *.gcda
 	rm -f *.gcdo
 	rm -f *.gcna

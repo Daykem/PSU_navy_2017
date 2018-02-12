@@ -31,7 +31,7 @@ int check_error(char *str)
 		if (buffer[0] != c || buffer[1] != ':' || alpha(buffer[2])
 		== 1 || num(buffer[3]) == 1 || buffer[4] != ':'
 		|| alpha(buffer[5]) == 1 || num(buffer[6]) == 1 ||
-		(buffer[7] != '\n' && buffer[7] != '\0'))
+		(buffer[7] != '\n' && buffer[7] != '\0') || c > '5')
 			return (1);
 		else if (buffer[2] != buffer[5] && buffer[3] != buffer[6])
 			return (1);

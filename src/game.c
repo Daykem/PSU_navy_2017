@@ -38,7 +38,7 @@ void my_turn(char **enemy_tab, char *coord, int pid)
 	while (42) {
 		my_printf("\nattack: ");
 		coord = get_next_line(0);
-		if (coord[0] >= 'A' && coord[0] <= 'H' &&
+		if (coord != NULL && coord[0] >= 'A' && coord[0] <= 'H' &&
 		coord[1] >= '1' && coord[1] <= '8' && coord[2] == '\0')
 			break;
 		my_printf("wrong position");

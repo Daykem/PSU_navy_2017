@@ -39,6 +39,7 @@ int check_error(char *str)
 	int fd = open(str, O_RDONLY);
 	char* buffer;
 	char c = '2';
+	int n = 1;
 
 	while ((buffer = get_next_line(fd)) != NULL) {
 		if (buffer[0] != c || buffer[1] != ':' || alpha(buffer[2])
@@ -46,10 +47,14 @@ int check_error(char *str)
 		|| alpha(buffer[5]) == 1 || num(buffer[6]) == 1 ||
 		(buffer[7] != '\n' && buffer[7] != '\0') || c > '5')
 			return (1);
-		else if (buffer[2] != buffer[5] && buffer[3] != buffer[6])
+		else if ((buffer[2] != buffer[5] && buffer[3] != buffer[6]) ||
+		(buffer[5] - buffer[2] != n && buffer[6] - buffer[3] != n))
 			return (1);
 		c++;
+		n++;
 	}
+	if (c != '6')
+		return (1);
 	return (0);
 }
 

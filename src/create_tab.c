@@ -54,7 +54,7 @@ void check_dir(char **tab, int i, int j, char nb)
 		i++;
 	}
 	j++;
-	while(tab[j] != NULL) {
+	while (tab[j] != NULL) {
 		if (tab[j][savei] == nb) {
 			fill_ver(tab, savej, savei, nb);
 			return;

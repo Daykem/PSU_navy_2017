@@ -52,7 +52,7 @@ int check_hit(char **tab, char *coord)
 	return (1);
 }
 
-void enemy_hit(char **tab, char*coord, int hit)
+void enemy_hit(char **tab, char *coord, int hit)
 {
 	int pos = 0;
 	int letter = 'A';

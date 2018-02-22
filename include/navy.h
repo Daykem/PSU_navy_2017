@@ -35,5 +35,6 @@ void find_coord(int, int);
 void tata(int);
 void toto(int);
 int check_win(char**);
+int check_getline(char*);
 
 #endif /* NAVY_H_ */

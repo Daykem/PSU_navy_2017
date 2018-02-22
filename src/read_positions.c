@@ -7,6 +7,19 @@
 
 #include "navy.h"
 
+int check_getline(char *coord)
+{
+	if (coord == NULL) {
+		my_printf("\nwrong position");
+		return (1);
+	} else if (coord[0] < 'A' || coord[0] > 'H' ||
+	coord[1] < '1' || coord[1] > '8' || coord[2] != '\0') {
+		my_printf("wrong position");
+		return (1);
+	}
+	return (0);
+}
+
 int alpha(char c)
 {
 	if (c >= 'A' && c <= 'H')

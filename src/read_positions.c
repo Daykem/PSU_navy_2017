@@ -37,7 +37,7 @@ int num(char c)
 int check_error(char *str)
 {
 	int fd = open(str, O_RDONLY);
-	char* buffer;
+	char *buffer;
 	char c = '2';
 	int n = 1;
 

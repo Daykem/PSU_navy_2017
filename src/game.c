@@ -86,10 +86,10 @@ int game1(char *map, int enemy_pid)
 		my_printf("\nenemy's positions:\n");
 		print_tab(enemy_tab);
 		my_turn(enemy_tab, coord, enemy_pid);
-		enemy_turn(tab, enemy_pid);
 		if (gfunc5(1) == 14)
 			return (0);
-		else if (gfunc4(1) == 14)
+		enemy_turn(tab, enemy_pid);
+		if (gfunc4(1) == 14)
 			return (1);
 	}
 }
@@ -110,10 +110,10 @@ int game2(char *map, int enemy_pid)
 		my_printf("\nenemy's positions:\n");
 		print_tab(enemy_tab);
 		enemy_turn(tab, enemy_pid);
+		if (gfunc4(1) == 14)
+			return (1);
 		my_turn(enemy_tab, coord, enemy_pid);
 		if (gfunc5(1) == 14)
 			return (0);
-		else if (gfunc4(1) == 14)
-			return (1);
 	}
 }
